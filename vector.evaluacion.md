@@ -67,6 +67,7 @@ Sed concisos en las respuestas. Se valorarán las referencias utilizadas._
 
   - Rendimiento pico (R~pico~) teórico de un núcleo (_core_), en GFLOPS.
 
+    
       Para las versiones escalares, considerar que las unidades funcionales trabajan en modo escalar.
       Considerar asimismo la capacidad FMA de las unidades funcionales solamente para las versiones compiladas con soporte FMA.
 
