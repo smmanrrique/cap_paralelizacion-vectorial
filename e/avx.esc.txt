@@ -1,0 +1,25 @@
+ for (unsigned int i = 0; i < LEN; i++)
+  40070f:	bb c0 10 60 00       	mov    $0x6010c0,%ebx
+{
+  400714:	48 89 d8             	mov    %rbx,%rax
+  400717:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  40071e:	00 00 
+            x[i] = alpha*x[i] + beta;
+  400720:	c5 ea 59 00          	vmulss (%rax),%xmm2,%xmm0
+  400724:	48 83 c0 04          	add    $0x4,%rax
+  400728:	c5 fa 58 c1          	vaddss %xmm1,%xmm0,%xmm0
+  40072c:	c5 fa 11 40 fc       	vmovss %xmm0,-0x4(%rax)
+        for (unsigned int i = 0; i < LEN; i++)
+  400731:	48 3d c0 20 60 00    	cmp    $0x6020c0,%rax
+  400737:	75 e7                	jne    400720 <scale_shift+0x40>
+        dummy(x, alpha, beta);
+  400739:	c5 f8 28 c2          	vmovaps %xmm2,%xmm0
+  40073d:	bf c0 10 60 00       	mov    $0x6010c0,%edi
+  400742:	e8 ab fe ff ff       	callq  4005f2 <dummy>
+    for (unsigned int nl = 0; nl < NTIMES; nl++)
+  400747:	83 ed 01             	sub    $0x1,%ebp
+  40074a:	c5 fa 10 15 e2 02 00 	vmovss 0x2e2(%rip),%xmm2        # 400a34 <_IO_stdin_used+0xc4>
+  400751:	00 
+  400752:	c5 fa 10 0d de 02 00 	vmovss 0x2de(%rip),%xmm1        # 400a38 <_IO_stdin_used+0xc8>
+  400759:	00 
+  40075a:	75 b3                	jne    40070f <scale_shift+0x2f>

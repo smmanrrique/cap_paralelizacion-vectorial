@@ -1,0 +1,26 @@
+for (unsigned int i = 0; i < LEN; i++)
+  400748:	b8 c0 10 60 00       	mov    $0x6010c0,%eax
+  40074d:	0f 1f 00             	nopl   (%rax)
+            x[i] = alpha*x[i] + beta;
+  400750:	c5 fc 28 c3          	vmovaps %ymm3,%ymm0
+  400754:	c4 e2 6d 98 00       	vfmadd132ps (%rax),%ymm2,%ymm0
+  400759:	48 83 c0 20          	add    $0x20,%rax
+  40075d:	c5 fc 29 40 e0       	vmovaps %ymm0,-0x20(%rax)
+        for (unsigned int i = 0; i < LEN; i++)
+  400762:	48 39 c3             	cmp    %rax,%rbx
+  400765:	75 e9                	jne    400750 <scale_shift+0x50>
+        dummy(x, alpha, beta);
+  400767:	c5 fa 10 0d 95 02 00 	vmovss 0x295(%rip),%xmm1        # 400a04 <_IO_stdin_used+0xc4>
+  40076e:	00 
+  40076f:	c5 fa 10 05 91 02 00 	vmovss 0x291(%rip),%xmm0        # 400a08 <_IO_stdin_used+0xc8>
+  400776:	00 
+  400777:	bf c0 10 60 00       	mov    $0x6010c0,%edi
+  40077c:	c5 f8 77             	vzeroupper 
+  40077f:	e8 8e fe ff ff       	callq  400612 <dummy>
+    for (unsigned int nl = 0; nl < NTIMES; nl++)
+  400784:	41 83 ec 01          	sub    $0x1,%r12d
+  400788:	c5 fc 28 1d 90 02 00 	vmovaps 0x290(%rip),%ymm3        # 400a20 <_IO_stdin_used+0xe0>
+  40078f:	00 
+  400790:	c5 fc 28 15 a8 02 00 	vmovaps 0x2a8(%rip),%ymm2        # 400a40 <_IO_stdin_used+0x100>
+  400797:	00 
+  400798:	75 ae                	jne    400748 <scale_shift+0x48>
